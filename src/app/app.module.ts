@@ -16,6 +16,10 @@ import {AppRoutingModule} from './app-routing.module';
 import { RecipeBlankComponent } from './recipes/recipe-blank/recipe-blank.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import {RecipesService} from './recipes/recipes.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MaterialModule} from './material.module';
+
+
 
 @NgModule({
     declarations: [
@@ -36,7 +40,11 @@ import {RecipesService} from './recipes/recipes.service';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+
+
   ],
   providers: [ShoppingListService, RecipesService],
   bootstrap: [AppComponent]
