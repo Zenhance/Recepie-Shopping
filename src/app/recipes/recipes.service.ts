@@ -7,11 +7,10 @@ import {Subject} from 'rxjs';
 @Injectable()
 
 export class RecipesService {
-  recipeSelected = new Subject<Recipe>();
+  recipeChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [
     new Recipe(
-      1,
       'Creamy Sausage',
       'Creamy and Buttery Tortellini made with home-made Sausages',
       `https://therecipecritic.com/wp-content/uploads/2019/12/creamy_sausage_tortellini-368x463.jpg`,
@@ -29,16 +28,22 @@ export class RecipesService {
     return this.recipes.slice();
   }
 
-  getRecipe(id: number): Recipe{
-    return this.recipes.find(
-      (r) => {
-        return r.id === id;
-      }
-    );
+  getRecipe(index: number): Recipe{
+    return this.recipes[index];
   }
 
   addIngredientToShoppingList(ingredients: Ingredient[]): void{
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe): void {
+    this.recipes.push(recipe);
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe): void {
+    this.recipes[index] = newRecipe;
+    this.recipeChanged.next(this.recipes.slice());
   }
 
 }
