@@ -18,6 +18,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import {RecipesService} from './recipes/recipes.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 
@@ -43,8 +44,7 @@ import {MaterialModule} from './material.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-
-
+    FlexLayoutModule
   ],
   providers: [ShoppingListService, RecipesService],
   bootstrap: [AppComponent]
