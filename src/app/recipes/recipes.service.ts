@@ -18,10 +18,24 @@ export class RecipesService {
         new Ingredient('Sausage', 2),
         new Ingredient('Butter', 1),
         new Ingredient('Cream', 1)
-      ])
+      ]),
+    new Recipe(
+      'Mushroom Soup',
+      'Tasty Mushroom soup with cream & garlic.',
+      `https://i2.wp.com/simple-veganista.com/wp-content/uploads/2019/10/best-vegan-mushroom-soup-4.jpg`,
+      [
+        new Ingredient('Mushroom', 5),
+        new Ingredient('Cream', 1),
+        new Ingredient('Garlic', 2)
+      ]),
   ];
 
   constructor(private shoppingListService: ShoppingListService) {
+  }
+
+  setRecipes(recipes: Recipe[]): void{
+    this.recipes = recipes;
+    this.recipeChanged.next(this.recipes.slice());
   }
 
   getRecipes(): Recipe[]{

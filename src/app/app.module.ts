@@ -19,6 +19,7 @@ import {RecipesService} from './recipes/recipes.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -44,7 +45,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
   providers: [ShoppingListService, RecipesService],
   bootstrap: [AppComponent]

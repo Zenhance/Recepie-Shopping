@@ -1,16 +1,29 @@
-<a
-  class="list-group-item clearfix"
-  [routerLink]="[id]"
-  routerLinkActive="active"
-  >
-  <div class="pull-left">
-    <h4 class="list-group-item-heading">{{recipe.name}}</h4>
-    <p class="list-group-item-text">{{recipe.description}}</p>
-  </div>
-  <span class="pull-right">
-        <img
-          src="{{recipe.imagePath}}"
-          class="img-responsive"
-          style="max-height: 50px;">
-      </span>
+<!--<a-->
+<!--  class="list-group-item clearfix"-->
+<!--  [routerLink]="[id]"-->
+<!--  routerLinkActive="active"-->
+<!--  >-->
+<!--  <div class="pull-left">-->
+<!--    <h4 class="list-group-item-heading">{{recipe.name}}</h4>-->
+<!--    <p class="list-group-item-text">{{recipe.description}}</p>-->
+<!--  </div>-->
+<!--  <span class="pull-right">-->
+<!--        <img-->
+<!--          src="{{recipe.imagePath}}"-->
+<!--          class="img-responsive"-->
+<!--          style="max-height: 50px;">-->
+<!--      </span>-->
+<!--</a>-->
+<a [routerLink]="[id]"
+    routerLinkActive="active">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{recipe.name}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="{{recipe.imagePath}}" style="object-fit: contain">
+    <mat-card-content>
+      <p>{{recipe.description}}</p>
+    </mat-card-content>
+  </mat-card>
 </a>
+

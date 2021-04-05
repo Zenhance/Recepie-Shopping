@@ -13,11 +13,11 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #matMenu>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="onSaveData()">
         <mat-icon>save</mat-icon>
         <span>Save Data</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="onFetchData()">
         <mat-icon>download</mat-icon>
         <span>Load Data</span>
       </button>
