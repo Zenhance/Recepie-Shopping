@@ -9,26 +9,7 @@ import {Subject} from 'rxjs';
 export class RecipesService {
   recipeChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
-    new Recipe(
-      'Creamy Sausage',
-      'Creamy and Buttery Tortellini made with home-made Sausages',
-      `https://therecipecritic.com/wp-content/uploads/2019/12/creamy_sausage_tortellini-368x463.jpg`,
-      [
-        new Ingredient('Sausage', 2),
-        new Ingredient('Butter', 1),
-        new Ingredient('Cream', 1)
-      ]),
-    new Recipe(
-      'Mushroom Soup',
-      'Tasty Mushroom soup with cream & garlic.',
-      `https://i2.wp.com/simple-veganista.com/wp-content/uploads/2019/10/best-vegan-mushroom-soup-4.jpg`,
-      [
-        new Ingredient('Mushroom', 5),
-        new Ingredient('Cream', 1),
-        new Ingredient('Garlic', 2)
-      ]),
-  ];
+  private recipes: Recipe[] = [];
 
   constructor(private shoppingListService: ShoppingListService) {
   }
