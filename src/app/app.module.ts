@@ -20,6 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 
@@ -36,7 +39,10 @@ import {HttpClientModule} from '@angular/common/http';
         DropdownDirective,
         DropdownDirective,
         RecipeBlankComponent,
-        RecipeEditComponent
+        RecipeEditComponent,
+        AuthComponent,
+        LoginComponent,
+        SignupComponent
     ],
   imports: [
     BrowserModule,
