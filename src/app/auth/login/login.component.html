@@ -1,4 +1,10 @@
-<section style="margin-top: 15px">
+<div *ngIf="isLoading" style="text-align: center">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<div style="margin-top: 15px" *ngIf="!isLoading">
+  <div *ngIf="error" fxLayoutAlign="center center">
+    <mat-card fxLayoutAlign="center center">{{error}}</mat-card>
+  </div>
   <form fxLayout="column" fxLayoutAlign="center center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <input type="email" matInput placeholder="E-mail" formControlName="email">
@@ -12,4 +18,4 @@
     <button mat-raised-button type="submit" color="primary" [disabled]="loginForm.invalid">Login</button>
     <button mat-button type="button" (click)="switchToSignup()" color="accent">Don't have an account?</button>
   </form>
-</section>
+</div>

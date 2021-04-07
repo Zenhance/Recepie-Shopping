@@ -9,8 +9,10 @@ import {AuthService} from '../auth.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  isLoading = false;
   hide = true;
   signUpForm: FormGroup;
+  error: string = null;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -35,12 +37,14 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.signUpForm.value);
+    this.isLoading = true;
     this.authService.signup(this.signUpForm.value.email, this.signUpForm.value.password)
       .subscribe(responseData => {
         console.log(responseData);
+        this.isLoading = false;
       }, error => {
-        console.log(error);
+        this.error = error.error.error.message;
+        this.isLoading = false;
       });
 
     this.signUpForm.reset();

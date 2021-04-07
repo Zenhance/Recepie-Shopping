@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Route, Router} from '@angular/router';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,13 @@ import {ActivatedRoute, Route, Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   hide = true;
   loginForm: FormGroup;
+  isLoading = false;
+  error: string = null;
 
   constructor(private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private authService: AuthService) {
+  }
 
   ngOnInit(): void {
     this.initForm();
@@ -27,8 +32,16 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.loginForm.value);
-    this.loginForm.reset();
+    this.isLoading = true;
+    this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
+      .subscribe(responseData => {
+        console.log(responseData);
+        this.router.navigate(['/recipes']);
+        this.isLoading = false;
+      }, error => {
+        this.error = error.error.error.message;
+        this.isLoading = false;
+      });
   }
 
   switchToSignup(): void {

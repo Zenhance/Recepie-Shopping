@@ -4,12 +4,16 @@
   </div>
   <div fxFlex fxLayout fxLayoutAlign="start">
     <ul class="navigation-items" fxLayout fxLayoutGap="15px">
-      <li routerLinkActive="active"><a [routerLink]="['/recipes']">Recipes</a></li>
-      <li routerLinkActive="active"><a [routerLink]="['/shopping-list']">Shopping List</a> </li>
+      <li routerLinkActive="active" *ngIf="isAuthenticated">
+        <a [routerLink]="['/recipes']">Recipes</a>
+      </li>
+      <li routerLinkActive="active" *ngIf="isAuthenticated">
+        <a [routerLink]="['/shopping-list']">Shopping List</a>
+      </li>
     </ul>
   </div>
   <div fxFlex fxLayout fxLayoutAlign="end">
-    <button mat-icon-button [matMenuTriggerFor]="matMenu">
+    <button mat-icon-button [matMenuTriggerFor]="matMenu" *ngIf="isAuthenticated">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #matMenu>
@@ -20,6 +24,10 @@
       <button mat-menu-item (click)="onFetchData()">
         <mat-icon>download</mat-icon>
         <span>Load Data</span>
+      </button>
+      <button mat-menu-item (click)="onLogout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
       </button>
     </mat-menu>
   </div>
